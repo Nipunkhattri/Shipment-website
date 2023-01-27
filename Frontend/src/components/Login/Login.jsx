@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
+  const navigate=useNavigate()
   const [data, setData] = useState({
     email: "",
     password: "",
@@ -14,17 +16,20 @@ function Login() {
   };
   console.log(data);
   const handleSubmit = async (e) => {
-    const url = "http://127.0.0.1:3001/login";
     e.preventDefault();
+    const url = "http://127.0.0.1:5000/login";
     try {
       const User = await axios.post(url, {
         email: data.email,
         password: data.password,
       });
       if (User.status === 200) {
+        console.log("login")
+        navigate("/")
         setMessage(User.data);
        
       } else if (User.status === 401) {
+        console.log("No user")
         setMessage(User.data);
         
       }
