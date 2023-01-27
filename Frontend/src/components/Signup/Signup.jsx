@@ -5,7 +5,10 @@ function Signup() {
   const [data, setData] = useState({
     Name: "",
     email: "",
-    password: "",
+    phoneno: "",
+    password:"",
+    Adharno:"",
+    panno:""
   });
   const [message, setMessage] = useState("");
   const Handle = (e) => {
@@ -13,6 +16,7 @@ function Signup() {
     NewData[e.target.name] = e.target.value;
     setData(NewData);
   };
+  console.log(data);
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -68,10 +72,46 @@ function Signup() {
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="password">Password</label>
+                  <label htmlFor="Phone">Phoneno</label>
                   <br />
                   <input
-                    type="password"
+                    type="Number"
+                    className="form-control"
+                    required
+                    name="phoneno"
+                    value={data.phoneno}
+                    onChange={Handle}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="Number">Addhar Card No</label>
+                  <br />
+                  <input
+                    type="Number"
+                    className="form-control"
+                    required
+                    name="Adharno"
+                    value={data.Adharno}
+                    onChange={Handle}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="Number">Pan Card No</label>
+                  <br />
+                  <input
+                    type="Number"
+                    className="form-control"
+                    required
+                    name="Panno"
+                    value={data.Panno}
+                    onChange={Handle}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="Number">password</label>
+                  <br />
+                  <input
+                    type="Number"
                     className="form-control"
                     required
                     name="password"

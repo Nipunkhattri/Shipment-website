@@ -12,6 +12,7 @@ function Login() {
     newData[e.target.name] = e.target.value;
     setData(newData);
   };
+  console.log(data);
   const handleSubmit = async (e) => {
     const url = "http://127.0.0.1:3001/login";
     e.preventDefault();
@@ -20,7 +21,6 @@ function Login() {
         email: data.email,
         password: data.password,
       });
-
       if (User.status === 200) {
         setMessage(User.data);
        
