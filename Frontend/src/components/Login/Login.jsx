@@ -25,7 +25,7 @@ function Login() {
       });
       if (User.status === 200) {
         console.log("login")
-        navigate("/")
+        navigate("/ware")
         setMessage(User.data);
        
       } else if (User.status === 401) {
