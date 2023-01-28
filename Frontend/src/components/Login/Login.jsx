@@ -18,14 +18,16 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const url = "http://127.0.0.1:5000/login";
+    // const {id}=req.params();
     try {
       const User = await axios.post(url, {
         email: data.email,
         password: data.password,
       });
-      if (User.status === 200) {
+      if (User.data.length>0) {
         console.log("login")
-        navigate("/ware")
+        console.log(User.data[0].email)
+        navigate("/ware",{state:{email:User.data[0].email}})
         setMessage(User.data);
        
       } else if (User.status === 401) {
